@@ -71,7 +71,8 @@ public class ImageControllerTests {
 	public void deleteImagesShouldReturnMethodNotAllowed() throws Exception {
 		this.mockMvc.perform(delete("/images/"))
 		.andDo(print())
-		.andExpect(status().isMethodNotAllowed());		}
+		.andExpect(status().isMethodNotAllowed());		
+	}
 
 	@Test
 	@Order(5)
@@ -85,7 +86,7 @@ public class ImageControllerTests {
 	@Test
 	@Order(6)
 	public void deleteImageShouldReturnSuccess() throws Exception {
-		long imageId = 1;
+		long imageId = 0;
 
 		this.mockMvc.perform(delete("/images/" + imageId))
 		.andDo(print())
@@ -99,7 +100,7 @@ public class ImageControllerTests {
 	@Test
 	@Order(7)
 	public void createImageShouldReturnSuccess() throws Exception {
-        MockMultipartFile file = new MockMultipartFile("file", "filename.txt", "text/plain", "some xml".getBytes());
+        MockMultipartFile file = new MockMultipartFile("file", "filename.txt", "image/jpeg", "some xml".getBytes());
         mockMvc.perform(multipart("/images").file(file))
                .andExpect(status().isOk());
 	}

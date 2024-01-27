@@ -67,11 +67,20 @@ public class ImageController {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
+  
+  @RequestMapping(value = {"/images", "/images/"}, method = RequestMethod.DELETE)
+  public ResponseEntity<?> deleteImages() {
+      return new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
+  }  
 
-  @RequestMapping(value = "/images", method = RequestMethod.POST)
+  @RequestMapping(value = {"/images", "/images/"}, method = RequestMethod.POST)
   public ResponseEntity<?> addImage(@RequestParam("file") MultipartFile file,
       RedirectAttributes redirectAttributes) {
-    try {
+        String contentType = file.getContentType();
+        if (!(contentType.equals("image/jpeg")) ){
+          return new ResponseEntity<>(HttpStatus.UNSUPPORTED_MEDIA_TYPE);    
+        }
+      try {
       byte[] fileContent = file.getBytes();
       Image img = new Image(file.getOriginalFilename(), fileContent);
       imageDao.create(img);
