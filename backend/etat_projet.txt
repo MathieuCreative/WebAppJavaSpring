@@ -1,0 +1,12 @@
+Tout marche sauf les tests :
+[ERROR]   ImageControllerTests.createImageShouldReturnUnsupportedMediaType:112 Status expected:<415> but was:<200>
+[ERROR]   ImageControllerTests.deleteImageShouldReturnSuccess:92 Status expected:<204> but was:<404>
+[ERROR]   ImageControllerTests.deleteImagesShouldReturnMethodNotAllowed:74 Status expected:<405> but was:<404>
+
+Premier : createImage a marché alors que le format n'était pas sensé être le bon.
+Second : Il y a avait un pb c que je deletais 1 alors que il faut delete 0 pck 1 n'existe pas.
+Troisième : Ca c'est un gros pb pck ca veut dire que ImageController ne reconnaît pas quand une méthode n'existe pas 
+et donc ne reconnaît pas qu'il faut envoyer qu'elle n'existe potentiellement pas.
+-> Nécessité de trouver quand on fait un DELETE dans ImageController comment, si la méthode n'existe pas, 
+renvoyer 405 not allowed
+Quatrième : Je pense que c'est parce qu'on la delete avec le test deleteImage ?
