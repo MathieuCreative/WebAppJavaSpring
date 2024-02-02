@@ -28,6 +28,15 @@ public class ImageDao implements Dao<Image> {
     } catch (final IOException e) {
       e.printStackTrace();
     }
+    final ClassPathResource imgFile2 = new ClassPathResource("test2.jpg");
+    byte[] fileContent2;
+    try {
+      fileContent = Files.readAllBytes(imgFile2.getFile().toPath());
+      Image img = new Image("test2.jpg", fileContent);
+      images.put(img.getId(), img);
+    } catch (final IOException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override
