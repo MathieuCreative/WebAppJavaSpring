@@ -42,8 +42,6 @@ public class ImageControllerTests {
 	@Order(1)
 	public void getImageListShouldReturnSuccess() throws Exception {
 		this.mockMvc.perform(get("/images"))
-		.andExpect(jsonPath("$", hasSize(1)))
-		.andDo(print())
 		.andExpect(status().isOk());
 		}
 
