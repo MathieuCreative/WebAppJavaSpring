@@ -1,0 +1,12 @@
+{
+    "configurations": [
+      {
+        "type": "java",
+        "name": "Launch GrayLevelProcessing",
+        "request": "launch",
+        "mainClass": "imageprocessing.GrayLevelProcessing",
+        "args": "/Users/mathieu/Documents/projet_s6/tp-image/images/beach.jpg new.png"
+      }
+    ]
+  }      
+  
